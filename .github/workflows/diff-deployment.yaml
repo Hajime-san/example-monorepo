@@ -2,9 +2,7 @@ name: 'Deployment changed app'
 
 on:
   pull_request:
-    types: [closed]
-    branches:
-      - main
+    types: [opend]
 
 env:
   NODE_VERSION: 18
