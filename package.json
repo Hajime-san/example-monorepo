@@ -1,0 +1,23 @@
+{
+    "name": "root",
+    "private": true,
+    "workspaces": [
+      "typescript-turbo/apps/*",
+      "typescript-turbo/packages/*"
+    ],
+    "scripts": {
+      "build": "turbo run build",
+      "deploy:dev": "turbo run deploy:dev",
+      "dev": "turbo run dev",
+      "lint": "turbo run lint"
+    },
+    "devDependencies": {
+      "@changesets/cli": "^2.26.0",
+      "turbo": "latest"
+    },
+    "engines": {
+      "node": ">=14.0.0"
+    },
+    "packageManager": "npm@8.1.0"
+  }
+  
