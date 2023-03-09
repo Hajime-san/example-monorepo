@@ -31,4 +31,4 @@ jobs:
       if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
       run: npm ci
     - name: deployment
-      run: npx turbo run deploy:dev --filter=\[origin/main...$(git branch --show-current)\]
+      run: npx turbo run deploy:dev --filter=...\[origin/main\]
