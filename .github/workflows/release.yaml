@@ -11,6 +11,9 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: typescript-turbo
 
     steps:
       - uses: actions/checkout@v3
