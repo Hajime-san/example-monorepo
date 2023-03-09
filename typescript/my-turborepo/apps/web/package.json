@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "deploy:dev": "echo \"let's go!\"",
     "start": "next start",
     "lint": "next lint"
   },
