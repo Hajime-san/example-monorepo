@@ -8,6 +8,7 @@
     "scripts": {
       "build": "turbo run build",
       "deploy:dev": "turbo run deploy:dev",
+      "publish-packages": "turbo run build && changeset version",
       "dev": "turbo run dev",
       "lint": "turbo run lint"
     },
