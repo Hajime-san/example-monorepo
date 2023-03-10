@@ -1,5 +1,13 @@
 # web
 
+## 0.0.2
+
+### Patch Changes
+
+- 71d51a8: update ui!
+- Updated dependencies [71d51a8]
+  - ui@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes
