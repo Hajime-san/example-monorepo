@@ -1,5 +1,11 @@
 # docs
 
+## 0.0.6
+
+### Patch Changes
+
+- 15d4ef7: update
+
 ## 0.0.5
 
 ### Patch Changes
