@@ -1,14 +1,14 @@
-name: Release
+name: Create release pull request
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - .changeset/**.md
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  release:
+  create-release-pr:
     runs-on: ubuntu-latest
 
     steps:
