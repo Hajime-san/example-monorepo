@@ -24,16 +24,16 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: cache node_modules
-      id: node_modules_cache_id
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: node-v${{ env.NODE_VERSION }}-deps-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          node-v${{ env.NODE_VERSION }}-deps-
-          node-v${{ env.NODE_VERSION }}-
-          node-v
+    # - name: cache node_modules
+    #   id: node_modules_cache_id
+    #   uses: actions/cache@v3
+    #   with:
+    #     path: ~/.npm
+    #     key: node-v${{ env.NODE_VERSION }}-deps-${{ hashFiles('**/package-lock.json') }}
+    #     restore-keys: |
+    #       node-v${{ env.NODE_VERSION }}-deps-
+    #       node-v${{ env.NODE_VERSION }}-
+    #       node-v
 
     - name: setup node
       uses: actions/setup-node@v3
@@ -41,7 +41,7 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
 
     - name: install node modules
-      if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
+      # if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
       run: npm ci
 
     - name: create tag & push
