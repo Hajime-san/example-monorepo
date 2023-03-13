@@ -4,9 +4,6 @@ on:
   push:
     branch:
       - main
-    paths:
-      - typescript-turbo/.changeset/**.md
-      - '!typescript-turbo/.changeset/README.md'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -42,7 +39,7 @@ jobs:
 
       - name: Create Release Pull Request
         uses: changesets/action@v1
-        # with:
-        #   cwd: typescript-turbo
+        with:
+          cwd: typescript-turbo
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
