@@ -1,0 +1,8 @@
+{
+    "pull_request": {
+        "merged": true,
+        "head": {
+            "ref": "changeset-release"
+        }
+    }
+}
