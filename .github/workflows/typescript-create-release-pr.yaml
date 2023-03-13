@@ -1,9 +1,12 @@
-name: Create release pull request
+name: 'typescript: Create release pull request'
 
 on:
   push:
     branch:
       - main
+    paths:
+      - typescript-turbo/.changeset/**.md
+      - '!typescript-turbo/.changeset/README.md'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 

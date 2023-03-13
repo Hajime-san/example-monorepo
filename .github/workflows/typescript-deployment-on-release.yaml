@@ -1,4 +1,4 @@
-name: 'Deployment changed app'
+name: 'typescript: Deployment changed app'
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
 
 env:
   NODE_VERSION: 18
-  DEPOLY_LIST: ("docs" "web")
+  DEPLOYMENT_LIST: ("docs" "web")
 
 jobs:
   set-matrix:
@@ -17,7 +17,7 @@ jobs:
       run:
         working-directory: typescript-turbo
     outputs:
-      deploy_list: ${{ steps.set-matrix.outputs.value }}
+      deployment_list: ${{ steps.set-matrix.outputs.value }}
 
     steps:
     - uses: actions/checkout@v3
@@ -43,24 +43,29 @@ jobs:
     - name: install node modules
       if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
       run: npm ci
-      
-    - name: make deploy list value
-      id: set-matrix
+
+    - name: create tag & push
       run: |
-          list=$(npx turbo run build --filter=\[HEAD^1] --dry=json | jq -c '.packages')
-          git branch --show-current
+          npx changeset tag
+          git push --follow-tags
+      
+    - name: make deployment list value
+      id: set-matrix
+      # remove root package '//' defined by turbo
+      run: |
+          list=$(npx turbo run build --filter=!\// --filter=\[HEAD^1] --dry=json | jq -c '.packages')
           echo $list
           echo "value=${list}" >> $GITHUB_OUTPUT
 
-  deploy:
+  deployment:
     needs: set-matrix
-    if: ${{ needs.set-matrix.outputs.deploy_list != '' && toJson(fromJson(needs.set-matrix.outputs.deploy_list)) != '[]' }}
+    if: ${{ needs.set-matrix.outputs.deployment_list != '' && toJson(fromJson(needs.set-matrix.outputs.deployment_list)) != '[]' }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        deploy_list: ${{fromJson(needs.set-matrix.outputs.deploy_list)}}
+        deployment_list: ${{fromJson(needs.set-matrix.outputs.deployment_list)}}
     steps:
-      - name: Deploy app
-        if: contains(env.DEPOLY_LIST, matrix.deploy_list)
-        run: echo "Deploy app name is ${{ matrix.deploy_list }}"
+      - name: "deployment: ${{ matrix.deployment_list }}"
+        if: contains(env.DEPLOYMENT_LIST, matrix.deployment_list)
+        run: echo "Deployment app name is ${{ matrix.deployment_list }}"
