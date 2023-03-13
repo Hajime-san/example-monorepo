@@ -1,5 +1,11 @@
 # docs
 
+## 0.0.5
+
+### Patch Changes
+
+- 47c38a8: patch change for docs
+
 ## 0.0.4
 
 ### Patch Changes
