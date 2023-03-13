@@ -1,11 +1,25 @@
 {
   "name": "my-turborepo",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "build": "turbo run build",
+    "deploy:dev": "turbo run deploy:dev",
+    "publish-packages": "turbo run build && changeset version",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.0",
+    "turbo": "latest",
     "eslint-config-custom": "*",
     "prettier": "latest"
-  }
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "npm@8.1.0"
 }
