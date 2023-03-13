@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-      fetch-depth: 0
+        fetch-depth: 0
 
     - name: cache node_modules
       id: node_modules_cache_id
@@ -26,6 +26,10 @@ jobs:
       with:
         path: ~/.npm
         key: node-v${{ env.NODE_VERSION }}-deps-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          node-v${{ env.NODE_VERSION }}-deps-
+          node-v${{ env.NODE_VERSION }}-
+          node-v
 
     - name: setup node
       uses: actions/setup-node@v3

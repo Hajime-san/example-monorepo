@@ -20,6 +20,10 @@ jobs:
         with:
           path: ~/.npm
           key: node-v${{ env.NODE_VERSION }}-deps-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            node-v${{ env.NODE_VERSION }}-deps-
+            node-v${{ env.NODE_VERSION }}-
+            node-v
 
       - name: setup node
         uses: actions/setup-node@v3
