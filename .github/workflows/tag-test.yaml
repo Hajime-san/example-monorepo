@@ -28,8 +28,10 @@ jobs:
       - name: check tag
         run: git tag
 
-      - name: check tag 2
-        run: git tag foo && git tag
+      - name: changest action
+        uses: changesets/action@v1
+        with:
+          publish: npm run publish
 
       # - name: push tag
       #   run: git push origin --tags
