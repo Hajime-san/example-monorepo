@@ -4,9 +4,11 @@ on:
   push:
     branch:
       - main
-    paths:
-      - typescript-turbo/.changeset/**.md
-      - '!typescript-turbo/.changeset/README.md'
+    # paths:
+    #   - typescript-turbo/.changeset/**.md
+    #   - '!typescript-turbo/.changeset/README.md'
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   create-release-pr:

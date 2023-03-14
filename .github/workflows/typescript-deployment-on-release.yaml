@@ -45,7 +45,7 @@ jobs:
       run: npm ci
 
     - name: create tag & push
-      run: npx changeset tag && git push --follow-tags
+      run: npx changeset tag && git push origin --tags
       
     - name: make deployment list value
       id: set-matrix
