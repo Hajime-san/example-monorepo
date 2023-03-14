@@ -44,8 +44,12 @@ jobs:
       # if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
       run: npm ci
 
-    - name: create tag & push
-      run: npx changeset tag && git push origin --tags
+    - name: changest action
+      uses: changesets/action@v1
+      with:
+        publish: npm run publish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
     - name: make deployment list value
       id: set-matrix
