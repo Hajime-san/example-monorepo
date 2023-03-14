@@ -6,8 +6,7 @@ on:
       - main
     paths:
       - typescript-turbo/.changeset/**.md
-    paths-ignore:
-      - typescript-turbo/.changeset/README.md
+      - '!typescript-turbo/.changeset/README.md'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
