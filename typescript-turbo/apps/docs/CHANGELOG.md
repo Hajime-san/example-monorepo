@@ -1,5 +1,11 @@
 # docs
 
+## 0.0.8
+
+### Patch Changes
+
+- 9ef7696: update docs
+
 ## 0.0.7
 
 ### Patch Changes
