@@ -28,5 +28,8 @@ jobs:
       - name: check tag
         run: git tag
 
-      - name: push tag
-        run: git push origin --tags
+      - name: check tag 2
+        run: git tag foo && git tag
+
+      # - name: push tag
+      #   run: git push origin --tags
