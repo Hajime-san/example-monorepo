@@ -1,5 +1,11 @@
 # docs
 
+## 0.0.11
+
+### Patch Changes
+
+- 33b1ca8: docs!
+
 ## 0.0.10
 
 ### Patch Changes
