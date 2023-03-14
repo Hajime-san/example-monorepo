@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  create-release-pr:
+  push-tag:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -24,6 +24,9 @@ jobs:
 
       - name: create tag
         run: npx changeset tag
+
+      - name: check tag
+        run: git tag
 
       - name: push tag
         run: git push origin --tags
