@@ -1,0 +1,47 @@
+name: 'typescript: Deployment selected app'
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_list:
+        description: 'select deployment app'
+        required: true
+        type: choice
+        options:
+        - docs
+        - web
+env:
+  NODE_VERSION: 18
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: typescript-turbo
+
+    steps:
+    - uses: actions/checkout@v3
+
+    # - name: cache node_modules
+    #   id: node_modules_cache_id
+    #   uses: actions/cache@v3
+    #   with:
+    #     path: ~/.npm
+    #     key: node-v${{ env.NODE_VERSION }}-deps-${{ hashFiles('**/package-lock.json') }}
+    #     restore-keys: |
+    #       node-v${{ env.NODE_VERSION }}-deps-
+    #       node-v${{ env.NODE_VERSION }}-
+    #       node-v
+
+    - name: setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: install node modules
+      # if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
+      run: npm ci
+      
+    - name: "deployment: ${{ inputs.deployment_list }}"
+      run: echo "Deployment app name is ${{ inputs.deployment_list }}"
