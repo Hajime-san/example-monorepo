@@ -1,5 +1,11 @@
 # docs
 
+## 0.0.10
+
+### Patch Changes
+
+- 200dd59: update docs
+
 ## 0.0.9
 
 ### Patch Changes
