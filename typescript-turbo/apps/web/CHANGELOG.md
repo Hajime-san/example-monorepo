@@ -1,5 +1,11 @@
 # web
 
+## 0.0.4
+
+### Patch Changes
+
+- 564f96f: web!
+
 ## 0.0.3
 
 ### Patch Changes
